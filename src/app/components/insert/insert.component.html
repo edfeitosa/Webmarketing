@@ -1,0 +1,7 @@
+<h2>Nova mensagem</h2>
+<p>Adicione a mensagem que deseja enviar</p>
+<form [formGroup]="form">
+    <input type="text" [formControlName]="formInsert.mensagem" [(ngModel)]="formInsert.mensagem" placeholder="Informe o texto que será enviado">
+    <br />
+    <button type="submit" (click)="onSubmit()">Salvar</button>
+</form>
