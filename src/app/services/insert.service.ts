@@ -20,9 +20,8 @@ export class InsertService {
       'Token': '123456'
     });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(GlobalVariable.BASE_INSERT, body, options).map((response: Response) => {
-      let token = response.json() && response.json().token; 
-    });
+    return this.http.post(GlobalVariable.BASE_INSERT, body, options)
+    .map(response => response.json());
   }
 
 }

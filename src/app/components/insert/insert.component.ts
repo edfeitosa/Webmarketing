@@ -28,7 +28,13 @@ export class InsertComponent implements OnInit {
 
   onSubmit() {
     console.log(this.formInsert);
-    console.log(this.insertService.insertCrud(this.formInsert));
+    this.insertService.insertCrud(this.formInsert)
+    .subscribe(
+      retorno => {
+        console.log("Chegou aqui");
+      },
+      error => console.log(error)
+    );
   }
 
 }
