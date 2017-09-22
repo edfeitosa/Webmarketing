@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { Observable } from 'rxjs';
 
 import { Insert } from '../../model/insert';
+import { InsertService } from '../../services/insert.service';
 
 @Component({
   selector: 'app-insert',
@@ -16,7 +17,8 @@ export class InsertComponent implements OnInit {
   public formInsert: Insert = new Insert();
 
   constructor(
-    private routes: Router
+    private routes: Router,
+    private insertService: InsertService
   ) { }
 
   ngOnInit() {
@@ -25,7 +27,8 @@ export class InsertComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form);
+    console.log(this.formInsert);
+    console.log(this.insertService.insertCrud(this.formInsert));
   }
 
 }
