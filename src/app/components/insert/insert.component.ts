@@ -24,14 +24,17 @@ export class InsertComponent implements OnInit {
   ngOnInit() {
     let control: FormControl = new FormControl('', Validators.requiredTrue);
     this.form.addControl(this.formInsert.mensagem, control);
+    this.form.addControl(this.formInsert.id, control);
+    this.form.addControl(this.formInsert.action, control);
   }
 
   onSubmit() {
-    console.log(this.formInsert);
+    console.log(this.formInsert); 
     this.insertService.insertCrud(this.formInsert)
     .subscribe(
       retorno => {
-        console.log("Chegou aqui");
+        let info = JSON.parse(localStorage.getItem('returnInfo'));
+        console.log(info.mensagem);
       },
       error => console.log(error)
     );

@@ -14,14 +14,21 @@ export class InsertService {
   ) { }
 
   insertCrud(insert: Insert) {
-    let body = JSON.stringify({ 'mensagem': insert.mensagem });
+    let body = JSON.stringify({
+      'mensagem': insert.mensagem,
+      'id': 0,
+      'action': 'create'
+    });
     let headers = new Headers({
       'Content-Type': 'application/json',
       'Token': '123456'
     });
     let options = new RequestOptions({ headers: headers });
     return this.http.post(GlobalVariable.BASE_INSERT, body, options)
-    .map(response => response.json());
+    .map((response:Response) => {
+      localStorage.setItem('returnInfo', JSON.stringify(response.json()))
+      return true;
+    });
   }
 
 }
